@@ -12,9 +12,10 @@ namespace WebApiTest.Models
         public UserContext(DbContextOptions<UserContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
 
-        public DbSet<UserItem> UserItems { get; set; } = null!;
+        public DbSet<UserItem> UserItems { get; set; }
     }
 }
 

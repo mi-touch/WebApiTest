@@ -10,10 +10,10 @@ namespace WebApiTest.Models
     {
        
         public long Id { get; set; }
-        public string firstName { get; set; }
+        public string FirstName { get; set; }
 
-        public string lastName { get; set; }
+        public string LastName { get; set; }
 
-        public EmailAddressAttribute email { get; set; }
+        public string Email { get; set; }
     }
 }

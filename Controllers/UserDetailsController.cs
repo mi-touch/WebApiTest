@@ -16,13 +16,15 @@ namespace WebApiTest
         public UserItemsController(UserContext context)
         {
             _context = context;
+            
         }
         // GET: api/<controller>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserItem>>> GetUseritems()
+        public async Task<ActionResult<IEnumerable<UserItem>>> GetUserItems()
         {
-           
-            return new UserItem[] {};
+            var userItems = _context.UserItems();
+
+            return Ok();
         }
 
         // GET api/<controller>/5
