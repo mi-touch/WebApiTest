@@ -20,5 +20,21 @@ namespace WebApiTest.Models
 }
 
 
+public class UserContextTests
+{
+    [Fact]
+    public void CanCreateDatabase()
+    {
+        var options = new DbContextOptionsBuilder<UserContext>()
+            .UseInMemoryDatabase(databaseName: "TestDatabase")
+            .Options;
+
+        // Create the context
+        using var context = new UserContext(options);
+
+        // Verify the database is created
+        Assert.True(context.Database.EnsureCreated());
+    }
+}
 
 
