@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,36 +18,38 @@ namespace WebApiTest
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // This method is called by the runtime to add services to the DI container.
         public void ConfigureServices(IServiceCollection services)
         {
-          
+            // Add controllers
             services.AddControllers();
-            services.AddDbContext<UserContext>(opt =>
-            opt.UseInMemoryDatabase("UserList"));
-          
+
+            // Configure in-memory database for UserContext
+            services.AddDbContext<UserContext>(options =>
+                options.UseInMemoryDatabase("UserList"));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // This method is called by the runtime to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
+            }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-            
         }
-
     }
 }
