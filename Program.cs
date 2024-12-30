@@ -7,7 +7,7 @@ namespace WebApiTest
     {
         public static void Main(string[] args)
         {
-            // Build and run the host
+            // Build and run the host with create host builder
             CreateHostBuilder(args).Build().Run();
         }
 
