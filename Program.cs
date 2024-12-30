@@ -15,7 +15,7 @@ namespace WebApiTest
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    // Specify the Startup class to configure the application
+                    // Specify the Startup class to configure the application. 
                     webBuilder.UseStartup<Startup>();
                 });
     }
